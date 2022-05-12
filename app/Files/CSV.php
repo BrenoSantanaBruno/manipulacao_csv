@@ -41,7 +41,7 @@ class CSV
 
     //Metodo responsavel por incrementar a base de dados
     public static function criarArquivo($arquivo, $dados, $delimitador = ';') {
-        //Abrir arquivo para escrita
+        //Abrir arquivo para escrita e incrementa (a+)
         $csv = fopen($arquivo, 'a+');
 
         //Cria o corpo do arquivo CSV
