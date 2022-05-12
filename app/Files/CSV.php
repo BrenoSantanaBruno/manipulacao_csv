@@ -31,8 +31,28 @@ class CSV
                         array_combine($cabecalhoDados, $linha) :
                         $linha;
         }
+        //Fecha o Arquivo
+        fclose($csv);
+
 
         // Retorna os dados processados
         return $dados;
+    }
+
+    //Metodo responsavel por incrementar a base de dados
+    public static function criarArquivo($arquivo, $dados, $delimitador = ';') {
+        //Abrir arquivo para escrita
+        $csv = fopen($arquivo, 'a+');
+
+        //Cria o corpo do arquivo CSV
+
+        foreach ($dados as $linha) {
+            fputcsv($csv, $linha, $delimitador);
+        }
+
+        //Fechar o arquivo
+        fclose($csv);
+
+        return true;
     }
 }
