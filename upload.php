@@ -1,17 +1,17 @@
 <?php
-
 require __DIR__.'/vendor/autoload.php';
 use \App\Files\CSV;
 
-
+    $display_table = '';
     if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
         $upload_dir = getcwd().DIRECTORY_SEPARATOR.'/files';
         if($_FILES['csv']['error'] == UPLOAD_ERR_OK){
             $tmp_name = $_FILES['csv']['tmp_name'];
-            $name = strval(time()).basename($_FILES['csv']['name']);
+            $name = strval(time())." ".basename($_FILES['csv']['name']);
             $csvfile = $upload_dir.'/'.$name;
             move_uploaded_file($tmp_name, $csvfile);
             echo "Finalizado";
+            $display_table = CSV::uploadDeArquivo($csvfile);
 
         }
     }
@@ -35,5 +35,12 @@ use \App\Files\CSV;
         <input  type="file" name="csv"/>
         <input type="submit" name="upload" value="Upload CSV"/>
     </form>
+    <div>
+        <?php
+            if (strlen($display_table)>0) {
+                echo $display_table;
+            }
+        ?>
+    </div>
 </body>
 </html>

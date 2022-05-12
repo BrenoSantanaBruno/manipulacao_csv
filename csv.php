@@ -4,6 +4,10 @@ function get_html($csv_file) {
     $file = fopen($csv_file, 'a+');
     $header_arr = fgetcsv($file);
     $html.='<thead>';
+    foreach ($header_arr as $k=>$v)
+    {
+        $html.='<th>'.$v.'</th>';
+    }
 
     $html.='<thead>';
 
@@ -21,4 +25,3 @@ function get_html($csv_file) {
     return $html;
 }
 
-echo get_html('files/1652370140Guias Boletos Cancelados de 01-01-2021 à 31-01-2022.csv');

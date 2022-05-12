@@ -57,18 +57,16 @@ class CSV
 
     }
 
-    public static function uploadDeArquivo($dados) {
+    public static function uploadDeArquivo($csv_file) {
         $novoArquivo = './files/arquivo-escrita.csv';
-        $gravar = fopen($novoArquivo, 'a+');
+        $file = fopen($csv_file, 'a+');
+        $header_arr = fgetcsv($file);
 
-//        fwrite($gravar, implode("", $dados));
-        //Criar arquivo csv
-//
-        foreach ($dados as $linha) {
-            fputcsv($gravar, $linha, "");
+        foreach ($header_arr as $k=>$v) {
+            fputcsv($novoArquivo, $v, ";");
         }
 
         //Fechar arquivo
-        fclose($gravar);
+        fclose($file);
     }
 }
