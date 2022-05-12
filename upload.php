@@ -37,9 +37,9 @@ use \App\Files\CSV;
     </form>
     <div>
         <?php
-            if (strlen($display_table)>0) {
-                echo $display_table;
-            }
+//            if (strlen($display_table)>0) {
+//                echo $display_table;
+//            }
         ?>
     </div>
 </body>

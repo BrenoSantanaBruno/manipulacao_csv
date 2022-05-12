@@ -58,12 +58,12 @@ class CSV
     }
 
     public static function uploadDeArquivo($csv_file) {
-        $novoArquivo = './files/arquivo-escrita.csv';
+        $novoArquivo = fopen('./files/arquivo-escrita.csv', 'a+');
         $file = fopen($csv_file, 'a+');
         $header_arr = fgetcsv($file);
 
         foreach ($header_arr as $k=>$v) {
-            fputcsv($novoArquivo, $v, ";");
+            fputcsv($novoArquivo, (array)$v, ";");
         }
 
         //Fechar arquivo
