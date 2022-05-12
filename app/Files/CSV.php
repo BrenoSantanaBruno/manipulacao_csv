@@ -56,4 +56,19 @@ class CSV
         return true;
 
     }
+
+    public static function uploadDeArquivo($dados) {
+        $novoArquivo = './files/arquivo-escrita.csv';
+        $gravar = fopen($novoArquivo, 'a+');
+
+//        fwrite($gravar, implode("", $dados));
+        //Criar arquivo csv
+//
+        foreach ($dados as $linha) {
+            fputcsv($gravar, $linha, "");
+        }
+
+        //Fechar arquivo
+        fclose($gravar);
+    }
 }

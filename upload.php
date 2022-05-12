@@ -8,16 +8,11 @@ use \App\Files\CSV;
         $upload_dir = getcwd().DIRECTORY_SEPARATOR.'/files';
         if($_FILES['csv']['error'] == UPLOAD_ERR_OK){
             $tmp_name = $_FILES['csv']['tmp_name'];
-            $name = basename($_FILES['csv']['name']);
+            $name = strval(time()).basename($_FILES['csv']['name']);
             $csvfile = $upload_dir.'/'.$name;
             move_uploaded_file($tmp_name, $csvfile);
             echo "Finalizado";
 
-            $dados = $_FILES;
-
-            $sucesso = CSV::criarArquivo(__DIR__ . '/files/arquivo-escrita.csv', $dados, ';');
-
-            var_dump($sucesso);
         }
     }
 
@@ -36,6 +31,7 @@ use \App\Files\CSV;
 </head>
 <body>
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value=""/>
         <input  type="file" name="csv"/>
         <input type="submit" name="upload" value="Upload CSV"/>
     </form>
