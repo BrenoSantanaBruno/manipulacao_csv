@@ -54,5 +54,6 @@ class CSV
         fclose($csv);
 
         return true;
+
     }
 }
