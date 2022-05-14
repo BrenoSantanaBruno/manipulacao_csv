@@ -31,15 +31,13 @@ use \App\Files\CSV;
 </head>
 <body>
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="MAX_FILE_SIZE" value=""/>
+        <input type="hidden" name="MAX_FILE_SIZE" value="838860899"/>
         <input  type="file" name="csv"/>
         <input type="submit" name="upload" value="Upload CSV"/>
     </form>
     <div>
         <?php
-//            if (strlen($display_table)>0) {
-//                echo $display_table;
-//            }
+//            off
         ?>
     </div>
 </body>
