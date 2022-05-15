@@ -7,7 +7,16 @@ $diretorio = '';
 if(isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'cadastro_de_contribuintes'){
     $diretorio = './files/uploads/cadastro_de_contribuintes/';
 
+}   else if (isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'guia_boletos_cancelados') {
+    $diretorio = './files/uploads/guia_boletos_cancelados/';
 }
+    else if (isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'guia_boletos_emitidos') {
+    $diretorio = './files/uploads/guia_boletos_emitidos/';
+}
+    else if (isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'nfse_emitidas') {
+    $diretorio = './files/uploads/nfse_emitidas/';
+}
+
 
 if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
     $upload_dir = getcwd().DIRECTORY_SEPARATOR.$diretorio;
