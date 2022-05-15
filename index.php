@@ -4,8 +4,13 @@ use \App\Files\CSV;
 
 $chamar_funcao = '';
 $diretorio = '';
+if(isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'cadastro_de_contribuintes'){
+    $diretorio = './files/uploads/cadastro_de_contribuintes/';
+
+}
+
 if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
-    $upload_dir = getcwd().DIRECTORY_SEPARATOR.'/files/uploads/';
+    $upload_dir = getcwd().DIRECTORY_SEPARATOR.$diretorio;
     if($_FILES['csv']['error'] == UPLOAD_ERR_OK){
         $tmp_name = $_FILES['csv']['tmp_name'];
         $name = strval(time())." ".basename($_FILES['csv']['name']);
@@ -13,9 +18,7 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
         move_uploaded_file($tmp_name, $csvfile);
         echo "Finalizado";
 
-if($_POST['upload_directory'] == 'cadastro_de_contribuintes') {
-    $diretorio = './files/uploads/cadastro_de_contribuintes/';
-}
+
 
 
 
