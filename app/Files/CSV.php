@@ -58,7 +58,7 @@ class CSV
     }
 
     public static function uploadDeArquivo($csv_file) {
-        $novoArquivo = fopen('./files/arquivo-escrita.csv', 'a+');
+        $novoArquivo = fopen('./files/guias_boletos_cancelados.csv', 'a+');
         $file = fopen($csv_file, 'a+');
         $header_arr = fgetcsv($file);
 

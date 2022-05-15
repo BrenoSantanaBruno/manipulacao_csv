@@ -6,6 +6,6 @@ use \App\Files\CSV;
 
 $dados = $arquivo_uploaded;
 
-$sucesso = CSV::criarArquivo(__DIR__ . '/files/arquivo-escrita.csv', $dados, ';');
+$sucesso = CSV::criarArquivo(__DIR__ . '/files/guias_boletos_cancelados.csv', $dados, ';');
 
 var_dump($sucesso);
