@@ -5,8 +5,8 @@ namespace App\Files;
 class CSV
 {
     //Funcao responsavel por escrever de forma incremental um arquivo geral atraves de cada upload
-    public static function uploadDeArquivo($csv_file) {
-        $novoArquivo = fopen('./files/guias_boletos_cancelados.csv', 'a+');
+    public static function uploadDeArquivo($csv_file, $diretorio) {
+        $novoArquivo = fopen($diretorio."/base_de_dados.csv", "a+");
         $file = fopen($csv_file, 'a+');
         $header_arr = fgetcsv($file);
         $lines = array();
