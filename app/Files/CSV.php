@@ -61,12 +61,14 @@ class CSV
         $novoArquivo = fopen('./files/guias_boletos_cancelados.csv', 'a+');
         $file = fopen($csv_file, 'a+');
         $header_arr = fgetcsv($file);
-
         $lines = array();
+
+        foreach ($header_arr as $k=>$v) {
+            fputcsv($novoArquivo, (array)$v, ";" );
+        }
+
         while(!feof($file) && ($line = fgetcsv($file)) !== false) {
             $lines[] = $line;
-            //var_dump($lines);
-
             foreach ($line as $k=>$v) {
                 fputcsv($novoArquivo, (array)$v, ";");
             }
