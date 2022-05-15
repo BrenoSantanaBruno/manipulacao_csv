@@ -54,6 +54,7 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="MAX_FILE_SIZE" value=""/>
         <input  type="file" name="csv"/>
+        <br /><br />
             <input type="radio" name="upload_directory" value="cadastro_de_contribuintes" required>
                 <label for="cadastro_de_contribuintes">Cadastro de Contribuintes</label><br>
 
@@ -65,7 +66,8 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
 
             <input type="radio" name="upload_directory" value="nfse_emitidas">
                 <label for="nfse_emitidas">NFSe Emitidas</label>
-
+        <br />
+        <br />
         <input type="submit" name="upload" value="Upload CSV"/>
     </form>
     <div>
