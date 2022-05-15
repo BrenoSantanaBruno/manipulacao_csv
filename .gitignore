@@ -3,3 +3,5 @@
 /files/uploads/guia_boletos_emitidos/*
 /files/uploads/nfse_emitidas/*
 .idea
+/vendor
+
