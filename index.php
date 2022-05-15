@@ -15,7 +15,9 @@ if(isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'cadastro_
 }
     else if (isset($_POST['upload_directory']) && $_POST['upload_directory'] == 'nfse_emitidas') {
     $diretorio = './files/uploads/nfse_emitidas/';
-}
+} else {
+        //return false;
+    }
 
 
 if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
@@ -52,7 +54,7 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="MAX_FILE_SIZE" value=""/>
         <input  type="file" name="csv"/>
-            <input type="radio" name="upload_directory" value="cadastro_de_contribuintes">
+            <input type="radio" name="upload_directory" value="cadastro_de_contribuintes" required>
                 <label for="cadastro_de_contribuintes">Cadastro de Contribuintes</label><br>
 
             <input type="radio" name="upload_directory" value="guia_boletos_cancelados">
@@ -67,9 +69,7 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
         <input type="submit" name="upload" value="Upload CSV"/>
     </form>
     <div>
-        <?php
-//            off
-        ?>
+
     </div>
 </body>
 </html>
