@@ -4,35 +4,27 @@ namespace App\Files;
 
 class CSV
 {
-    /*
-     * Metodo responsavel por ler um arquivo CSV e retornar um array de dados.
-     */
-    public static function lerArquivo($arquivo, $cabecalho = true, $delimitador = ';') {
-        //verificar se o arquivo existe.
-        if (!file_exists($arquivo)) {
-            die("Arquivo não encontrado\n");
+    //Funcao responsavel por escrever de forma incremental um arquivo geral atraves de cada upload
+    public static function uploadDeArquivo($csv_file, $diretorio) {
+        $novoArquivo = fopen($diretorio."/base_de_dados.csv", "a+");
+        $file = fopen($csv_file, 'a+');
+        $header_arr = fgetcsv($file);
+        $lines = array();
+
+        foreach ($header_arr as $k=>$v) {
+            fputcsv($novoArquivo, (array)$v, ";" );
         }
 
-        // Dados das linhas do arquivo
-
-        $dados = [];
-
-        //Abre o arquivo
-
-        $csv = fopen($arquivo, 'r');
-
-        //Cabecalho dos dados (primeira linha)
-        $cabecalhoDados = $cabecalho ? fgetcsv($csv, 0,$delimitador) : [];
-
-
-        //Itera o arquivo lendo todas as linhas
-        while($linha = fgetcsv($csv, 0,$delimitador)){
-            $dados[] = $cabecalho ?
-                        array_combine($cabecalhoDados, $linha) :
-                        $linha;
+        while(!feof($file) && ($line = fgetcsv($file)) !== false) {
+            $lines[] = $line;
+            foreach ($line as $k=>$v) {
+                fputcsv($novoArquivo, (array)$v, ";");
+            }
         }
 
-        // Retorna os dados processados
-        return $dados;
+
+
+        //Fechar arquivo
+        fclose($file);
     }
 }
