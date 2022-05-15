@@ -62,9 +62,17 @@ class CSV
         $file = fopen($csv_file, 'a+');
         $header_arr = fgetcsv($file);
 
-        foreach ($header_arr as $k=>$v) {
-            fputcsv($novoArquivo, (array)$v, ";");
+        $lines = array();
+        while(!feof($file) && ($line = fgetcsv($file)) !== false) {
+            $lines[] = $line;
+            //var_dump($lines);
+
+            foreach ($line as $k=>$v) {
+                fputcsv($novoArquivo, (array)$v, ";");
+            }
         }
+
+
 
         //Fechar arquivo
         fclose($file);
