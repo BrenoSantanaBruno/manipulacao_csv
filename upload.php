@@ -2,16 +2,16 @@
 require __DIR__.'/vendor/autoload.php';
 use \App\Files\CSV;
 
-    $display_table = '';
+    $chamar_funcao = '';
     if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
-        $upload_dir = getcwd().DIRECTORY_SEPARATOR.'/files';
+        $upload_dir = getcwd().DIRECTORY_SEPARATOR.'/files/uploads/';
         if($_FILES['csv']['error'] == UPLOAD_ERR_OK){
             $tmp_name = $_FILES['csv']['tmp_name'];
             $name = strval(time())." ".basename($_FILES['csv']['name']);
             $csvfile = $upload_dir.'/'.$name;
             move_uploaded_file($tmp_name, $csvfile);
             echo "Finalizado";
-            $display_table = CSV::uploadDeArquivo($csvfile);
+            $chamar_funcao = CSV::uploadDeArquivo($csvfile);
 
         }
     }
@@ -31,7 +31,7 @@ use \App\Files\CSV;
 </head>
 <body>
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="MAX_FILE_SIZE" value="838860899"/>
+        <input type="hidden" name="MAX_FILE_SIZE" value=""/>
         <input  type="file" name="csv"/>
         <input type="submit" name="upload" value="Upload CSV"/>
     </form>
