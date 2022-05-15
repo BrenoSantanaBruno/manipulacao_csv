@@ -56,13 +56,13 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
         <input  type="file" name="csv"/>
         <br /><br />
             <input type="radio" name="upload_directory" value="cadastro_de_contribuintes" required>
-                <label for="cadastro_de_contribuintes">Cadastro de Contribuintes</label><br>
+                <label for="cadastro_de_contribuintes">Cadastro de Contribuintes</label><br />
 
             <input type="radio" name="upload_directory" value="guia_boletos_cancelados">
-                <label for="guia_boletos_cancelados">Guia Boletos Cancelados</label><br>
+                <label for="guia_boletos_cancelados">Guia Boletos Cancelados</label><br />
 
             <input type="radio" name="upload_directory" value="guia_boletos_emitidos">
-                <label for="guia_boletos_emitidos">Guia Boletos Emitidos</label>
+                <label for="guia_boletos_emitidos">Guia Boletos Emitidos</label><br />
 
             <input type="radio" name="upload_directory" value="nfse_emitidas">
                 <label for="nfse_emitidas">NFSe Emitidas</label>
