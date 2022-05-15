@@ -1,3 +1,5 @@
-/files/*
+/files/uploads/cadastro_de_contribuintes/*
+/files/uploads/guia_boletos_cancelados/*
+/files/uploads/guia_boletos_emitidos/*
+/files/uploads/nfse_emitidas/*
 .idea
-uploads/*
