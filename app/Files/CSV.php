@@ -27,4 +27,8 @@ class CSV
         //Fechar arquivo
         fclose($file);
     }
+
+    public static function exibirBasedeDados($arquivo, ) {
+
+    }
 }
