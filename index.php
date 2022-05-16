@@ -33,12 +33,31 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
 
 
 
-        $chamar_funcao = CSV::uploadDeArquivo($csvfile, $diretorio);
+        $chamar_funcao = CSV::uploadDeArquivo($csvfile, $upload_dir);
 
     }
 }
 
 
+$arquivo = '';
+if(isset($_POST['exibir']) && $_POST['exibir'] == 'cadastro_de_contribuintes') {
+    $arquivo = getcwd().DIRECTORY_SEPARATOR.'/files/uploads/cadastro_de_contribuintes/base_de_dados.csv';
+}
+
+else if(isset($_POST['exibir']) && $_POST['exibir'] == 'guia_boletos_cancelados') {
+    $arquivo = getcwd().DIRECTORY_SEPARATOR.'files/uploads/guia_boletos_cancelados/base_de_dados.csv';
+}
+
+else if(isset($_POST['exibir']) && $_POST['exibir'] == 'guia_boletos_emitidos') {
+    $arquivo = getcwd().DIRECTORY_SEPARATOR.'files/uploads/guia_boletos_emitidos/base_de_dados.csv';
+}
+
+else if(isset($_POST['exibir']) && $_POST['exibir'] == 'nfse_emitidas') {
+    $arquivo = getcwd().DIRECTORY_SEPARATOR.'files/uploads/nfse_emitidas/base_de_dados.csv';
+}
+
+
+$dados = '';
 
 
 
@@ -72,7 +91,7 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
     </form>
     <br/>
     <div>
-        <form action="" method="post" enctype="text/plain">
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="text/plain">
             <input type="radio" name="exibir" value="cadastro_de_contribuintes" required>
             <label for="cadastro_de_contribuintes_02">Cadastro de Contribuintes</label>
             <br/>
@@ -89,5 +108,18 @@ if(isset($_POST['upload']) && $_POST['upload'] == 'Upload CSV') {
             <input type="submit" name="exibir" value="Exibir">
         </form>
     </div>
+    <div>
+        <?php
+            echo "<pre>";
+            //$dados = CSV::exibirBasedeDados($arquivo, true, ';');
+            //var_dump();
+            echo "</pre>";
+        ?>
+    </div>
 </body>
 </html>
+<?php
+var_dump($arquivo);
+
+$dados = CSV::exibirBase_CadastroContribuintes();
+//?>

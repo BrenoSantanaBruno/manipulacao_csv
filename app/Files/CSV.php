@@ -28,7 +28,43 @@ class CSV
         fclose($file);
     }
 
-    public static function exibirBasedeDados($arquivo, ) {
+    public static function exibirBasedeDados($arquivo, $cabecalho = true, $delimitador = ';') {
+        if(!file($arquivo)){
+            die("Arquivo não encontrado\n");
+        }
+        $dados = [];
 
+        $csv = fopen($arquivo, "r");
+
+        $cabecalhoDados = $cabecalho ? fgetcsv($csv, 0, $delimitador) : [];
+
+        while($linha = fgetcsv($csv, 0, $delimitador)){
+            $dados[] = $cabecalho ? array_combine($cabecalhoDados, $linha) : $linha;
+        }
+        return print_r($dados);
+
+        fclose($csv);
+    }
+
+
+    public static function exibirBase_CadastroContribuintes() {
+        echo "<table border='1'>";
+        $start_row = 1;
+        if(($csv_file = fopen('./files/uploads/cadastro_de_contribuintes/base_de_dados.csv', 'r')) !== FALSE) {
+            while(($read_data = fgetcsv($csv_file, 0, ';')) !== FALSE) {
+                $column_count = count($read_data);
+                echo '<tr>';
+
+                $start_row ++;
+                for ($c = 0; $c < $column_count; $c++) {
+                    echo '<td>'.$read_data[$c] . '</td>';
+                }
+                echo '</tr>';
+            }
+            fclose($csv_file);
+        }
+
+        echo '</table>';
     }
 }
+
