@@ -4,4 +4,5 @@
 /files/uploads/nfse_emitidas/*
 .idea
 /vendor
-
+.DS_Store
+app/.DS_Store
